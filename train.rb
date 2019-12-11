@@ -1,12 +1,10 @@
-require_relative 'module_manufacturer'
-
 class Train
   include TrainCarrige
   include InstanceCounter #Train.include(InstanceCounter)
 
   attr_reader :carrig
 
-  NUMBER_FORMAT = /[0-9]+/
+  NUMBER_FORMAT = /^[0-9a-zа-я]{3}[0-9a-zа-я]{2}$/i
   NAME_FORMAT = /[а-я]*[a-z]*\D/i
 
   def initialize
@@ -42,7 +40,6 @@ class Train
 
   def validate!
     raise 'Number can`t be nil' if @number.nil?
-    raise 'Number can`t be zero' if @number.zero?
     raise 'Name manufacturer can`t be nil' if @name_manufacturer.nil?
     raise 'Name manufacturer can`t be empty string' if @name_manufacturer == ''
     raise 'Number has invalid format' if @number !~ NUMBER_FORMAT
