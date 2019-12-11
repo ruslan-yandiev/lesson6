@@ -1,11 +1,12 @@
 class Carrig
-  include Manufacturer
+  include TrainCarrige
 
   attr_reader :number
 
-  def initialize(numb)
-    @number = numb
+  def initialize
     @status = false
+    self.number!
+    self.name_manufacturer!
   end
 
   def change_status(train)

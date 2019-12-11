@@ -1,19 +1,24 @@
 require_relative 'module_manufacturer'
 
 class Train
-  include Manufacturer
+  include TrainCarrige
   include InstanceCounter #Train.include(InstanceCounter)
 
-  attr_reader :number, :carrig
+  attr_reader :carrig
 
-  def initialize(numb)
-    @number = numb
+  NUMBER_FORMAT = /[0-9]+/
+  NAME_FORMAT = /[а-я]*[a-z]*\D/i
+
+  def initialize
     @speed = 0
     @route
     @arr_stations = []
     @train_now = nil
     @sum = 0
     @carrig = []
+    self.number!
+    self.name_manufacturer!
+    validate!
     register_instance
     get!
   end
@@ -26,6 +31,22 @@ class Train
     def get(key, value)
       @train_collection[key] = value
     end
+  end
+
+  def valid?
+    validate!
+    true
+  rescue
+    false
+  end
+
+  def validate!
+    raise 'Number can`t be nil' if @number.nil?
+    raise 'Number can`t be zero' if @number.zero?
+    raise 'Name manufacturer can`t be nil' if @name_manufacturer.nil?
+    raise 'Name manufacturer can`t be empty string' if @name_manufacturer == ''
+    raise 'Number has invalid format' if @number !~ NUMBER_FORMAT
+    raise 'Name manufacturer has invalid format' if @name_manufacturer !~ NAME_FORMAT
   end
 
   def get!
@@ -128,5 +149,5 @@ class Train
   end
 
   #метод защищен так как нельзя стартовать не зная в каком направлении должен двигаться поезд.
-  protected :start
+  protected :start, :validate!
 end
