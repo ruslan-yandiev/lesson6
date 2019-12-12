@@ -1,8 +1,8 @@
 class FreightCarrig < Carrig
   attr_reader :cargo_capacity
 
-  def initialize
-    super
+  def initialize(number)
+    super(number)
     @cargo_capacity = 5000
   end
 

@@ -1,16 +1,31 @@
 class Route
   include InstanceCounter
 
-  attr_accessor :route
+  attr_accessor :route, :name
 
-  def initialize
+  def initialize(name)
+    @name = name
     @route = []
-    self.name!
-    validate2!
+    validate!
     register_instance
-    rescue RuntimeError => e
-      puts e
-      retry
+  end
+
+  def name!
+    puts 'Введите имя:'
+    @name = gets.chomp.capitalize
+  end
+
+  def valid?
+    validate!
+    true
+  rescue
+    false
+  end
+
+  def validate!
+    raise 'Name can`t be nil' if @name.nil?
+    raise 'Name can`t be empty string' if @name == ''
+    raise 'Name has invalid format' if @name !~ NAME
   end
 
   def add_stations(new_route)
@@ -29,4 +44,6 @@ class Route
       @route.each { |x| puts x.name }
     end
   end
+
+  protected :validate!
 end

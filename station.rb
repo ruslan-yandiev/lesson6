@@ -1,19 +1,34 @@
 class Station
   include InstanceCounter
 
-  attr_reader :train
+  attr_reader :train, :name
 
   @@all = []
 
-  def initialize
+  def initialize(name)
+    @name = name
     @trains = []
-    self.name!
     validate2!
     register_instance
     @@all << self
-    rescue RuntimeError => e
-      puts e
-      retry
+  end
+
+  def name!
+    puts 'Введите имя:'
+    @name = gets.chomp.capitalize
+  end
+
+  def valid?
+    validate!
+    true
+  rescue
+    false
+  end
+
+  def validate!
+    raise 'Name can`t be nil' if @name.nil?
+    raise 'Name can`t be empty string' if @name == ''
+    raise 'Name has invalid format' if @name !~ NAME
   end
 
   def self.all
@@ -38,5 +53,7 @@ class Station
     puts "Со станции #{name} отправился поезд: #{train.class}  №#{train.number}"
     @trains.delete(train)
   end
+
+  protected :validate!
 end
 

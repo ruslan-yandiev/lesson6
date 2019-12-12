@@ -21,22 +21,38 @@ class Сonstructor
       if @collection[number].nil?
         puts 'Вы неверно указали номер!!!'
       elsif @collection[number] == Station
-        object = @collection[number].new
+        puts 'Введите имя станции:'
+        name = gets.chomp
+        object = @collection[number].new(name)
         @stations << object
       elsif  @collection[number] == Route
-        object = @collection[number].new
+        puts 'Введите имя маршрута:'
+        name = gets.chomp
+        object = @collection[number].new(name)
         @routes << object
       elsif  @collection[number] == CargoTrain
-        object = @collection[number].new
+        puts "Введите номер.\nДопустимый формат: три буквы или цифры в любом порядке,
+        \rнеобязательный дефис (может быть, а может нет) и еще 2 буквы или цифры после дефиса."
+        number = gets.chomp
+        object = @collection[number].new(number)
         @cargo_trains << object
       elsif  @collection[number] == PassengerTrain
-        object = @collection[number].new
+        puts "Введите номер.\nДопустимый формат: три буквы или цифры в любом порядке,
+        \rнеобязательный дефис (может быть, а может нет) и еще 2 буквы или цифры после дефиса."
+        number = gets.chomp
+        object = @collection[number].new(number)
         @passenger_trains << object
       elsif  @collection[number] == FreightCarrig
-        object = @collection[number].new
+        puts "Введите номер.\nДопустимый формат: три буквы или цифры в любом порядке,
+        \rнеобязательный дефис (может быть, а может нет) и еще 2 буквы или цифры после дефиса."
+        number = gets.chomp
+        object = @collection[number].new(number)
         @f_carrigs << object
       elsif  @collection[number] == PassengerCarrig
-        object = @collection[number].new
+        puts "Введите номер.\nДопустимый формат: три буквы или цифры в любом порядке,
+        \rнеобязательный дефис (может быть, а может нет) и еще 2 буквы или цифры после дефиса."
+        number = gets.chomp
+        object = @collection[number].new(number)
         @p_carrigs << object
       end
     end

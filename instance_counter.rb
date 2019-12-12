@@ -13,33 +13,13 @@ module InstanceCounter
     end
   end
 
-  module InstanceMethods
-    attr_accessor :name
-
+  module InstanceMethodse
     NAME = /^[а-яa-z]+\D/i
-
-    def name!
-      puts 'Введите имя:'
-      @name = gets.chomp.capitalize
-    end
-
-    def valid?
-      validate!
-      true
-    rescue
-      false
-    end
-
-    def validate2!
-      raise 'Name can`t be nil' if @name.nil?
-      raise 'Name can`t be empty string' if @name == ''
-      raise 'Name has invalid format' if @name !~ NAME
-    end
 
     def register_instance
       self.class.plus
     end
 
-    protected :register_instance, :validate2!
+    protected :register_instance
   end
 end

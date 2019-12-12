@@ -2,24 +2,21 @@ class Train
   include TrainCarrige
   include InstanceCounter #Train.include(InstanceCounter)
 
-  attr_reader :carrig
+  attr_reader :carrig, :number
 
-  def initialize
+  def initialize(number)
+    @number = number
     @speed = 0
     @route
     @arr_stations = []
     @train_now = nil
     @sum = 0
     @carrig = []
-    self.number!
     self.name_manufacturer!
     validate!
     register_instance
     get!
     show_add_train
-    rescue RuntimeError => e
-      puts e
-      retry
   end
 
   class << self
@@ -30,6 +27,28 @@ class Train
     def get(key, value)
       @train_collection[key] = value
     end
+  end
+
+  begin
+
+    rescue RuntimeError => e
+      puts e
+      retry
+  end
+
+  def valid?
+    validate!
+    true
+  rescue
+    false
+  end
+
+  def validate!
+    raise 'Number can`t be nil' if @number.nil?
+    raise 'Name manufacturer can`t be nil' if @name_manufacturer.nil?
+    raise 'Name manufacturer can`t be empty string' if @name_manufacturer == ''
+    raise 'Number has invalid format' if @number !~ NUMBER_FORMAT
+    raise 'Name manufacturer has invalid format' if @name_manufacturer !~ NAME_FORMAT
   end
 
   def get!
@@ -136,5 +155,5 @@ class Train
   end
 
   #метод защищен так как нельзя стартовать не зная в каком направлении должен двигаться поезд.
-  protected :start
+  protected :start, :validate!
 end
