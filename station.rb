@@ -6,10 +6,9 @@ class Station
   @@all = []
 
   def initialize
-    @name
     @trains = []
     self.name!
-    validate!
+    validate2!
     register_instance
     @@all << self
     rescue RuntimeError => e
@@ -38,12 +37,6 @@ class Station
   def send_train(train)
     puts "Со станции #{name} отправился поезд: #{train.class}  №#{train.number}"
     @trains.delete(train)
-  end
-
-  def name!
-    print 'Введите наименование станции: '
-    name_st = gets.chomp.capitalize
-    @name = name_st
   end
 end
 

@@ -1,8 +1,6 @@
 class Carrig
   include TrainCarrige
 
-  attr_reader :number
-
   def initialize
     @status = false
     self.number!
@@ -11,21 +9,6 @@ class Carrig
     rescue RuntimeError => e
       puts e
       retry
-  end
-
-  def valid?
-    validate!
-    true
-  rescue
-    false
-  end
-
-  def validate!
-    raise 'Number can`t be nil' if @number.nil?
-    raise 'Name manufacturer can`t be nil' if @name_manufacturer.nil?
-    raise 'Name manufacturer can`t be empty string' if @name_manufacturer == ''
-    raise 'Number has invalid format' if @number !~ NUMBER_FORMAT
-    raise 'Name manufacturer has invalid format' if @name_manufacturer !~ NAME_FORMAT
   end
 
   def change_status(train)
@@ -50,5 +33,5 @@ class Carrig
 
   # Методы необходимо инкапсулировать, для того, чтобы их статус мог быть изменен
   # только после присоединения к поезду, а значит доступен только через методы в классе.
-  protected :connect, :disconnect, :validate!
+  protected :connect, :disconnect
 end

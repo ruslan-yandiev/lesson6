@@ -224,8 +224,8 @@ class Сonstructor
   end
 
   def cargo_train_add_route
-    @cargo_trains.each.with_index(1) do |train, index|
-      puts "Укажите маршрут для #{index}-го грузового поезда"
+    @cargo_trains.each do |train|
+      puts "Укажите маршрут для грузового поезда №#{train.number}"
 
       @routes.each_with_index do |type, index|
         puts "\t#{index}. Маршрут: #{type.name}"
@@ -244,8 +244,8 @@ class Сonstructor
   end
 
   def passenger_train_add_route
-    @passenger_trains.each.with_index(1) do |train, index|
-      puts "Укажите маршрут для #{index}-го пассажирского поезда"
+    @passenger_trains.each do |train|
+      puts "Укажите маршрут для пассажирского поезда №#{train.number}"
 
       @routes.each_with_index do |type, index|
         puts "\t#{index}. Маршрут: #{type.name}"

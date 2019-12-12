@@ -30,7 +30,7 @@ module InstanceCounter
       false
     end
 
-    def validate!
+    def validate2!
       raise 'Name can`t be nil' if @name.nil?
       raise 'Name can`t be empty string' if @name == ''
       raise 'Name has invalid format' if @name !~ NAME
@@ -40,6 +40,6 @@ module InstanceCounter
       self.class.plus
     end
 
-    protected :register_instance, :validate!
+    protected :register_instance, :validate2!
   end
 end

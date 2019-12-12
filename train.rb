@@ -32,21 +32,6 @@ class Train
     end
   end
 
-  def valid?
-    validate!
-    true
-  rescue
-    false
-  end
-
-  def validate!
-    raise 'Number can`t be nil' if @number.nil?
-    raise 'Name manufacturer can`t be nil' if @name_manufacturer.nil?
-    raise 'Name manufacturer can`t be empty string' if @name_manufacturer == ''
-    raise 'Number has invalid format' if @number !~ NUMBER_FORMAT
-    raise 'Name manufacturer has invalid format' if @name_manufacturer !~ NAME_FORMAT
-  end
-
   def get!
     self.class.get(@number, self)
   end
@@ -151,5 +136,5 @@ class Train
   end
 
   #метод защищен так как нельзя стартовать не зная в каком направлении должен двигаться поезд.
-  protected :start, :validate!
+  protected :start
 end

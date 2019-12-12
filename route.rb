@@ -4,10 +4,9 @@ class Route
   attr_accessor :route
 
   def initialize
-    @name
     @route = []
     self.name!
-    validate!
+    validate2!
     register_instance
     rescue RuntimeError => e
       puts e
@@ -29,11 +28,5 @@ class Route
     else
       @route.each { |x| puts x.name }
     end
-  end
-
-  def name!
-    print 'Введите наименование маршрута: '
-    name_st = gets.chomp.capitalize
-    @name = name_st
   end
 end
