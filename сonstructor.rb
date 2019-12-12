@@ -77,7 +77,7 @@ class Сonstructor
 
     if yes_or_no == 'да'
       print 'Укажите номер поезда:'
-      number = gets.chomp.to_i
+      number = gets.chomp
 
       CargoTrain.find(number)
     end
@@ -87,7 +87,7 @@ class Сonstructor
 
     if yes_or_no == 'да'
       print 'Укажите номер поезда:'
-      number = gets.chomp.to_i
+      number = gets.chomp
 
       PassengerTrain.find(number)
     end

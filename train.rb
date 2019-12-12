@@ -37,7 +37,7 @@ class Train
   end
 
   def type_train
-    puts self.class
+    self.class
   end
 
   def speed=(arg)
