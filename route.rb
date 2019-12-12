@@ -1,12 +1,17 @@
 class Route
   include InstanceCounter
 
-  attr_accessor :route, :name
+  attr_accessor :route
 
   def initialize
     @name
     @route = []
+    self.name!
+    validate!
     register_instance
+    rescue RuntimeError => e
+      puts e
+      retry
   end
 
   def add_stations(new_route)

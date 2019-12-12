@@ -1,15 +1,20 @@
 class Station
   include InstanceCounter
 
-  attr_reader :name, :train
+  attr_reader :train
 
   @@all = []
 
   def initialize
     @name
     @trains = []
+    self.name!
+    validate!
     register_instance
     @@all << self
+    rescue RuntimeError => e
+      puts e
+      retry
   end
 
   def self.all

@@ -4,9 +4,6 @@ class Train
 
   attr_reader :carrig
 
-  NUMBER_FORMAT = /^[0-9a-zа-я]{3}[0-9a-zа-я]{2}$/i
-  NAME_FORMAT = /[а-я]*[a-z]*\D/i
-
   def initialize
     @speed = 0
     @route
@@ -19,6 +16,10 @@ class Train
     validate!
     register_instance
     get!
+    show_add_train
+    rescue RuntimeError => e
+      puts e
+      retry
   end
 
   class << self
@@ -68,6 +69,10 @@ class Train
 
   def stop
     @speed = 0
+  end
+
+  def show_add_train
+    puts "Создан поезд тип: #{self.class} №#{self.number}, произведен #{self.name_manufacturer}"
   end
 
   def show_carriages

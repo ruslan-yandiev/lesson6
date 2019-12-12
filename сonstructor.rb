@@ -22,11 +22,9 @@ class Сonstructor
         puts 'Вы неверно указали номер!!!'
       elsif @collection[number] == Station
         object = @collection[number].new
-        object.name!
         @stations << object
       elsif  @collection[number] == Route
         object = @collection[number].new
-        object.name!
         @routes << object
       elsif  @collection[number] == CargoTrain
         object = @collection[number].new
