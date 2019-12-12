@@ -4,6 +4,9 @@ class Train
 
   attr_reader :carrig, :number
 
+  NUMBER_FORMAT = /^[0-9a-zа-я]{3}-?[0-9a-zа-я]{2}$/i
+  NAME_FORMAT = /^[а-яa-z]+\D/i
+
   def initialize(number)
     @number = number
     @speed = 0
@@ -27,13 +30,6 @@ class Train
     def get(key, value)
       @train_collection[key] = value
     end
-  end
-
-  begin
-
-    rescue RuntimeError => e
-      puts e
-      retry
   end
 
   def valid?

@@ -3,16 +3,13 @@ class Route
 
   attr_accessor :route, :name
 
+  NAME = /^[а-яa-z]+\D/i
+
   def initialize(name)
     @name = name
     @route = []
     validate!
     register_instance
-  end
-
-  def name!
-    puts 'Введите имя:'
-    @name = gets.chomp.capitalize
   end
 
   def valid?

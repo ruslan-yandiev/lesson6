@@ -13,9 +13,7 @@ module InstanceCounter
     end
   end
 
-  module InstanceMethodse
-    NAME = /^[а-яa-z]+\D/i
-
+  module InstanceMethods
     def register_instance
       self.class.plus
     end

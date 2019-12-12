@@ -3,19 +3,16 @@ class Station
 
   attr_reader :train, :name
 
+  NAME = /^[а-яa-z]+\D/i
+
   @@all = []
 
   def initialize(name)
     @name = name
     @trains = []
-    validate2!
+    validate!
     register_instance
     @@all << self
-  end
-
-  def name!
-    puts 'Введите имя:'
-    @name = gets.chomp.capitalize
   end
 
   def valid?

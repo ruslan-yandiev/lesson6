@@ -1,4 +1,4 @@
-require_relative 'module_add_train_carrige'
+require_relative 'module_manufacturer'
 require_relative 'instance_counter'
 require_relative 'carrig'
 require_relative 'freight_carrig'

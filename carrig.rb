@@ -3,6 +3,9 @@ class Carrig
 
   attr_reader :number
 
+  NUMBER_FORMAT = /^[0-9a-zа-я]{3}-?[0-9a-zа-я]{2}$/i
+  NAME_FORMAT = /^[а-яa-z]+\D/i
+
   def initialize(number)
     @number = number
     @status = false

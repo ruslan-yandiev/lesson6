@@ -21,39 +21,69 @@ class Сonstructor
       if @collection[number].nil?
         puts 'Вы неверно указали номер!!!'
       elsif @collection[number] == Station
-        puts 'Введите имя станции:'
-        name = gets.chomp
-        object = @collection[number].new(name)
-        @stations << object
+        begin
+          puts 'Введите имя станции:'
+          name = gets.chomp
+          object = @collection[number].new(name)
+          @stations << object
+        rescue RuntimeError => e
+          puts e
+          retry
+        end
       elsif  @collection[number] == Route
-        puts 'Введите имя маршрута:'
-        name = gets.chomp
-        object = @collection[number].new(name)
-        @routes << object
+        begin
+          puts 'Введите имя маршрута:'
+          name = gets.chomp
+          object = @collection[number].new(name)
+          @routes << object
+        rescue RuntimeError => e
+          puts e
+          retry
+        end
       elsif  @collection[number] == CargoTrain
-        puts "Введите номер.\nДопустимый формат: три буквы или цифры в любом порядке,
-        \rнеобязательный дефис (может быть, а может нет) и еще 2 буквы или цифры после дефиса."
-        number = gets.chomp
-        object = @collection[number].new(number)
-        @cargo_trains << object
+        begin
+          puts "Введите номер.\nДопустимый формат: три буквы или цифры в любом порядке,
+          \rнеобязательный дефис (может быть, а может нет) и еще 2 буквы или цифры после дефиса."
+          numb = gets.chomp
+          object = @collection[number].new(numb)
+          @cargo_trains << object
+        rescue RuntimeError => e
+          puts e
+          retry
+        end
       elsif  @collection[number] == PassengerTrain
-        puts "Введите номер.\nДопустимый формат: три буквы или цифры в любом порядке,
-        \rнеобязательный дефис (может быть, а может нет) и еще 2 буквы или цифры после дефиса."
-        number = gets.chomp
-        object = @collection[number].new(number)
-        @passenger_trains << object
+        begin
+          puts "Введите номер.\nДопустимый формат: три буквы или цифры в любом порядке,
+          \rнеобязательный дефис (может быть, а может нет) и еще 2 буквы или цифры после дефиса."
+          numb = gets.chomp
+          object = @collection[number].new(numb)
+          @passenger_trains << object
+        rescue RuntimeError => e
+          puts e
+          retry
+        end
       elsif  @collection[number] == FreightCarrig
-        puts "Введите номер.\nДопустимый формат: три буквы или цифры в любом порядке,
-        \rнеобязательный дефис (может быть, а может нет) и еще 2 буквы или цифры после дефиса."
-        number = gets.chomp
-        object = @collection[number].new(number)
-        @f_carrigs << object
+        begin
+          puts "Введите номер.\nДопустимый формат: три буквы или цифры в любом порядке,
+          \rнеобязательный дефис (может быть, а может нет) и еще 2 буквы или цифры после дефиса."
+          numb = gets.chomp
+          object = @collection[number].new(numb)
+          @f_carrigs << object
+        rescue RuntimeError => e
+          puts e
+          retry
+        end
       elsif  @collection[number] == PassengerCarrig
-        puts "Введите номер.\nДопустимый формат: три буквы или цифры в любом порядке,
-        \rнеобязательный дефис (может быть, а может нет) и еще 2 буквы или цифры после дефиса."
-        number = gets.chomp
-        object = @collection[number].new(number)
-        @p_carrigs << object
+        begin
+          puts "Введите номер.\nДопустимый формат: три буквы или цифры в любом порядке,
+          \rнеобязательный дефис (может быть, а может нет) и еще 2 буквы или цифры после дефиса."
+          numb = gets.chomp
+          object = @collection[number].new(numb)
+          @p_carrigs << object
+        rescue RuntimeError => e
+          puts e
+          retry
+        end
       end
     end
 
